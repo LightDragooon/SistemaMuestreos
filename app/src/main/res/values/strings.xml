@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SistemaMuestreos</string>
+    <string name="title_activity_menu_administrador">MenuAdministrador</string>
+</resources>
