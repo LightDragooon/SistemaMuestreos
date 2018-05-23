@@ -26,9 +26,6 @@ public class CrearUsuario extends AppCompatActivity {
     EditText txt_NombreUsuario,txt_Password;
     CheckBox Check_tipoUsuario;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

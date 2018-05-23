@@ -6,6 +6,5 @@ public class ClaseGlobal {
 
     public static final String Usuario_Insert = HOST_URL+"Queries/insertar_usuario.php";
 
-
-
+    public static final String Tarea_Insert = HOST_URL+"Queries/insertar_tarea.php";
 }

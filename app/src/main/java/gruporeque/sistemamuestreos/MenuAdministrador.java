@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class MenuAdministrador extends AppCompatActivity {
 
-    Button btn_crearUsuario,btn_salir,btn_trabajadores;
+    Button btn_crearUsuario,btn_salir,btn_trabajadores,btn_tareas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,12 +16,18 @@ public class MenuAdministrador extends AppCompatActivity {
         btn_crearUsuario = (Button)findViewById(R.id.btn_CrearUsuario);
         btn_salir = (Button)findViewById(R.id.btn_SalirAdm);
         btn_trabajadores=(Button)findViewById(R.id.btn_Trabajadores);
+        btn_tareas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent abrirCrearTarea = new Intent(MenuAdministrador.this, crear_tarea.class);
+                startActivity(abrirCrearTarea);
+            }
+        });
         btn_crearUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent abrirCrearUsuario = new Intent(MenuAdministrador.this,CrearUsuario.class);
                 startActivity(abrirCrearUsuario);
-
             }
         });
         btn_salir.setOnClickListener(new View.OnClickListener() {
@@ -38,10 +44,5 @@ public class MenuAdministrador extends AppCompatActivity {
                 startActivity(abrirTrabajadores);
             }
         });
-
-
-
-
-
     }
 }
