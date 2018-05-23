@@ -14,13 +14,13 @@ public class crear_trabajador extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_trabajador);
-        getActionBar().hide();
+        //getActionBar().hide();
         btnCrearTrabajador = (Button)findViewById(R.id.btn_CrearTrabajador);
         btnAtrasCrearTrabajador = (Button)findViewById(R.id.btn_AtrasCrearTrabajador);
         btnAtrasCrearTrabajador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent abrirMenuAdministrador = new Intent(crear_trabajador.this,MenuAdministrador.class);
+                Intent abrirMenuAdministrador = new Intent(crear_trabajador.this,Trabajadores.class);
                 startActivity(abrirMenuAdministrador);
             }
         });

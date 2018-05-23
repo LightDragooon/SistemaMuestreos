@@ -24,4 +24,31 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="24dp"
         android:text="Atrás" />
+
+    <ListView
+        android:id="@+id/listview_Trabajadores"
+        android:layout_width="310dp"
+        android:layout_height="239dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="89dp" />
+
+    <Button
+        android:id="@+id/btn_ModificarTrabajador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="113dp"
+        android:layout_marginStart="68dp"
+        android:text="Modificar" />
+
+    <Button
+        android:id="@+id/btn_EliminarTrabajador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/btn_ModificarTrabajador"
+        android:layout_marginEnd="68dp"
+        android:text="Eliminar" />
 </RelativeLayout>
