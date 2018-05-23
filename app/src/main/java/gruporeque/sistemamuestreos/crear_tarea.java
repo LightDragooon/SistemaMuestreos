@@ -42,7 +42,7 @@ public class crear_tarea extends AppCompatActivity {
         btn_new.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                crearTarea(v);
+                crearTarea();
             }
         });
 
@@ -55,7 +55,7 @@ public class crear_tarea extends AppCompatActivity {
         });
     }
 
-    private void crearTarea(View view){
+    private void crearTarea(){
         if(!txt_name.getText().toString().equals("")&&!txt_desc.getText().toString().equals("")){
             if(radioButtonTP.isChecked()) {
                 createWork(ClaseGlobal.Tarea_Insert+
