@@ -6,13 +6,13 @@
     tools:context=".MenuAdministrador">
 
     <Button
-        android:id="@+id/btn_CrearUsuario"
+        android:id="@+id/btn_Usuarios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:text="Crear Usuario" />
+        android:text="Usuarios" />
 
     <Button
         android:id="@+id/btn_Proyectos"

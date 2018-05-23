@@ -49,8 +49,8 @@ public class CrearUsuario extends AppCompatActivity {
         btn_salir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent abrirMenuAdministrador = new Intent(CrearUsuario.this,MenuAdministrador.class);
-                startActivity(abrirMenuAdministrador);
+                Intent abrirPantallaUsuarios = new Intent(CrearUsuario.this,Usuarios.class);
+                startActivity(abrirPantallaUsuarios);
             }
         });
     }
