@@ -49,8 +49,7 @@ public class CrearUsuario extends AppCompatActivity {
         btn_salir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent abrirPantallaUsuarios = new Intent(CrearUsuario.this,Usuarios.class);
-                startActivity(abrirPantallaUsuarios);
+                onBackPressed();
             }
         });
     }

@@ -24,7 +24,9 @@
         <activity android:name=".crear_proyecto" />
         <activity android:name=".crear_trabajador" />
         <activity android:name=".Trabajadores" />
-        <activity android:name=".Usuarios"></activity>
+        <activity android:name=".Usuarios" />
+        <activity android:name=".crear_operaciones" />
+        <activity android:name=".Proyectos"></activity>
     </application>
 
 </manifest>

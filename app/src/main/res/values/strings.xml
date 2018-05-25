@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">SistemaMuestreos</string>
     <string name="title_activity_menu_administrador">MenuAdministrador</string>
+    <string name="ident_proy">Identiicador del proyecto</string>
+    <string name="desc_proy">Descripción del proyecto</string>
+    <string name="nomb_cliente">Nombre del cliente</string>
+    <string name="fecha_inicio">Fecha de inicio</string>
+    <string name="crear">Crear</string>
+
 </resources>

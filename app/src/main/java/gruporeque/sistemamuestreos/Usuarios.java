@@ -34,8 +34,7 @@ public class Usuarios extends AppCompatActivity {
         btnAtrasUsuarios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent abrirMenuAdministrador = new Intent(Usuarios.this,MenuAdministrador.class);
-                startActivity(abrirMenuAdministrador);
+                onBackPressed();
             }
         });
 
