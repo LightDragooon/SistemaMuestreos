@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".crear_tarea">
+
+    <TextView
+        android:id="@+id/textViewNombreTarea"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Ingrese el nombre de la tarea"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="108dp" />
+
+    <TextView
+        android:id="@+id/textViewDescripTarea"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:text="Selecione el tipo de actividad"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="238dp" />
+
+    <TextView
+        android:id="@+id/textViewDescripTarea2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Ingrese la descripción de la tarea"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="171dp" />
+
+    <TextView
+        android:id="@+id/textViewTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crear tarea"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        tools:layout_editor_absoluteX="107dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <RadioGroup
+        android:id="@+id/radioTipoActividad"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="135dp"
+        tools:layout_editor_absoluteY="266dp">
+
+        <RadioButton
+            android:id="@+id/radioButtonTP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:checked="false"
+            android:text="Productiva" />
+
+        <RadioButton
+            android:id="@+id/radioButtonTC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:checked="false"
+            android:text="Colaborativa" />
+
+        <RadioButton
+            android:id="@+id/radioButtonTI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:checked="false"
+            android:text="Improductiva" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonCrearTarea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crear"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="401dp" />
+
+    <Button
+        android:id="@+id/buttonSalir"
+        android:layout_width="89dp"
+        android:layout_height="39dp"
+        android:text="Salir"
+        tools:layout_editor_absoluteX="279dp"
+        tools:layout_editor_absoluteY="465dp" />
+
+    <EditText
+        android:id="@+id/editTextDescTarea"
+        android:layout_width="215dp"
+        android:layout_height="36dp"
+        android:ems="10"
+        android:inputType="text"
+        android:textAppearance="@android:style/TextAppearance.Material.Small"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="190dp" />
+
+    <EditText
+        android:id="@+id/editTextNombreTarea"
+        android:layout_width="215dp"
+        android:layout_height="36dp"
+        android:ems="10"
+        android:inputType="text"
+        android:textAppearance="@android:style/TextAppearance.Material.Small"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="127dp" />
+
+</android.support.constraint.ConstraintLayout>
