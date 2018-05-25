@@ -5,12 +5,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Sistema de Muestreos"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true">
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         //android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -28,7 +28,8 @@
         <activity android:name=".Usuarios" />
         <activity android:name=".crear_operaciones" />
         <activity android:name=".Proyectos" />
-        <activity android:name=".crear_tarea"></activity>
+        <activity android:name=".crear_tarea" />
+        <activity android:name=".Tareas"></activity>
     </application>
 
 </manifest>
