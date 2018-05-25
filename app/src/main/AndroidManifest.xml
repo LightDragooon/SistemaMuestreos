@@ -23,6 +23,7 @@
         <activity android:name=".CrearUsuario" />
         <activity android:name=".crear_proyecto" />
         <activity android:name=".crear_trabajador" />
+        <activity android:name=".crear_tarea" />
         <activity android:name=".Trabajadores" />
         <activity android:name=".Usuarios" />
         <activity android:name=".crear_operaciones" />
