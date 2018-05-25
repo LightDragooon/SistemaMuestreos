@@ -58,7 +58,6 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:checked="false"
-            android:onClick="onRadioButtonClicked"
             android:text="Productiva" />
 
         <RadioButton
@@ -68,7 +67,6 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:checked="false"
-            android:onClick="onRadioButtonClicked"
             android:text="Colaborativa" />
 
         <RadioButton
@@ -78,7 +76,6 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:checked="false"
-            android:onClick="onRadioButtonClicked"
             android:text="Improductiva" />
 
     </RadioGroup>
