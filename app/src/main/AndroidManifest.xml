@@ -27,7 +27,7 @@
         <activity android:name=".Usuarios" />
         <activity android:name=".crear_operaciones" />
         <activity android:name=".Proyectos" />
-        <activity android:name=".crear_tarea"/>
+        <activity android:name=".crear_tarea"></activity>
     </application>
 
 </manifest>
