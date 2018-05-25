@@ -33,8 +33,7 @@ public class crear_tarea extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_crear_usuario);
-        getActionBar().hide();
+        setContentView(R.layout.activity_crear_tarea);
         btn_out = findViewById(R.id.imageButtonSalir);
         btn_new = findViewById(R.id.buttonCrearTarea);
         radioButtonTP = findViewById(R.id.radioButtonTP);
