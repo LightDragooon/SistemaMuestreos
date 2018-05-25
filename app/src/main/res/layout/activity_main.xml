@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="147dp"
+        android:layout_marginTop="157dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textColorLink="@color/colorAccent" />
@@ -22,8 +22,7 @@
         android:id="@+id/txt_contraseña"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/label_contraseña"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:ems="10"
         android:inputType="textPassword" />
 
@@ -40,17 +39,17 @@
         android:id="@+id/label_contraseña"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/txt_contraseña"
         android:layout_alignStart="@+id/txt_usuario"
-        android:layout_marginTop="206dp"
         android:text="Contraseña" />
 
     <TextView
         android:id="@+id/label_nombreUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/txt_usuario"
         android:layout_alignStart="@+id/txt_usuario"
-        android:layout_marginTop="128dp"
+        android:layout_marginBottom="-157dp"
         android:text="Nombre de usuario" />
+
 </RelativeLayout>

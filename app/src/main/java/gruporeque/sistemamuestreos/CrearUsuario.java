@@ -93,8 +93,8 @@ public class CrearUsuario extends AppCompatActivity {
     private void createUserAux(String response){
         try{
             JSONObject jsonObject = new JSONObject(response);
-            if(jsonObject.getString("status").equals("false") ) errorMessageDialog("No se pudo hacer xd");
-            else correctMessageDialog("Si se pudo hacer alv");
+            if(jsonObject.getString("status").equals("false") ) errorMessageDialog("No se ha podido crear el usuario");
+            else correctMessageDialog("Se ha creado el usuario exitosamente");
         }catch (JSONException e){
             e.printStackTrace();
         }

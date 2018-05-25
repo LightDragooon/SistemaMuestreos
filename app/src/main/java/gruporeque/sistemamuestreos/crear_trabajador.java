@@ -82,8 +82,8 @@ public class crear_trabajador extends AppCompatActivity {
     private void createOperadorAux(String response){
         try{
             JSONObject jsonObject = new JSONObject(response);
-            if(jsonObject.getString("status").equals("false") ) errorMessageDialog("No se pudo hacer xd");
-            else correctMessageDialog("Si se pudo hacer alv");
+            if(jsonObject.getString("status").equals("false") ) errorMessageDialog("No se ha podido crear el trabajador");
+            else correctMessageDialog("Se ha creado el trabajador exitosamente");
         }catch (JSONException e){
             e.printStackTrace();
         }

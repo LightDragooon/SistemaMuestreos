@@ -78,7 +78,7 @@ public class crear_proyecto extends AppCompatActivity implements View.OnClickLis
                     "&Cliente="+et_cliente.getText().toString()+
                     "&FechaI="+et_fechaI.getText().toString());
         }else{
-            errorMessageDialog("Llene todos las casillas para crear el usuario");
+            errorMessageDialog("Llene todos las casillas para crear el proyecto");
         }
     }
 
@@ -100,8 +100,8 @@ public class crear_proyecto extends AppCompatActivity implements View.OnClickLis
     private void guardarProyectoAux(String response){
         try{
             JSONObject jsonObject = new JSONObject(response);
-            if(jsonObject.getString("status").equals("false") ) errorMessageDialog("No se pudo hacer xd");
-            else correctMessageDialog("Si se pudo hacer alv");
+            if(jsonObject.getString("status").equals("false") ) errorMessageDialog("No se podido crear el proyecto");
+            else correctMessageDialog("Se ha creado el proyecto exitosamente");
         }catch (JSONException e){
             e.printStackTrace();
         }

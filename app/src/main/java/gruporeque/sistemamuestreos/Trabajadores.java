@@ -55,9 +55,10 @@ public class Trabajadores extends AppCompatActivity {
         btnModificarTrabajador=(Button)findViewById(R.id.btn_ModificarTrabajador);
         listTrabajadores = (ListView)findViewById(R.id.listview_Trabajadores);
 
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, obtenerTrabajadores());
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        List<String> listaAux = new ArrayList<>();
+        listaAux.add("Lista de trabajadores");
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, listaAux);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
         listTrabajadores.setAdapter(arrayAdapter);
 
         /*listTrabajadores.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

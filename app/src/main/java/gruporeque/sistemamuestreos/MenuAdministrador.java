@@ -14,7 +14,7 @@ public class MenuAdministrador extends AppCompatActivity {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
 
-    ImageButton btn_usuarios,btn_trabajadores, btn_proyectos;
+    ImageButton btn_usuarios,btn_trabajadores, btn_proyectos, btnTareas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +23,16 @@ public class MenuAdministrador extends AppCompatActivity {
         //btn_salir = (ImageButton)findViewById(R.id.btn_SalirAdm);
         btn_trabajadores=(ImageButton)findViewById(R.id.btn_Trabajadores);
         btn_proyectos = (ImageButton)findViewById(R.id.btn_Proyectos);
+        btnTareas = (ImageButton)findViewById(R.id.btn_Tareas);
+
+        btnTareas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent abrirTareas = new Intent(MenuAdministrador.this,crear_tarea.class);
+                startActivity(abrirTareas);
+            }
+        });
+
         btn_usuarios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
