@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -32,15 +34,17 @@ import org.json.JSONArray;
 import java.util.ArrayList;
 import java.util.List;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
+
+import static java.security.AccessController.getContext;
 
 
 public class Trabajadores extends AppCompatActivity {
 
     Button btnAtrasTrabajadores;
     Button btnCrearTrabajadores;
+    Button btnModificarTrabajador;
     ListView listTrabajadores;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +52,32 @@ public class Trabajadores extends AppCompatActivity {
         setContentView(R.layout.activity_trabajadores);
         btnAtrasTrabajadores = (Button)findViewById(R.id.btn_AtrasTrabajadores);
         btnCrearTrabajadores=(Button)findViewById(R.id.btn_TrabajadoresCrearTrabajador);
+        btnModificarTrabajador=(Button)findViewById(R.id.btn_ModificarTrabajador);
         listTrabajadores = (ListView)findViewById(R.id.listview_Trabajadores);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_activated_1, obtenerTrabajadores());
+
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, obtenerTrabajadores());
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         listTrabajadores.setAdapter(arrayAdapter);
 
+        /*listTrabajadores.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                errorMessageDialog("Me seleccionaron");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                errorMessageDialog("No me seleccionaron");
+            }
+        });*/
+
+        btnModificarTrabajador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         btnAtrasTrabajadores.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,10 +97,11 @@ public class Trabajadores extends AppCompatActivity {
     }
 
     private List<String> obtenerTrabajadores(){
-        String URL = ClaseGlobal.Trabajadores_Select;
+        String URL = ClaseGlobal.Usuarios_Select;
         final List<String> arraySpinner = new ArrayList<>();
+        arraySpinner.add("Lista de trabajadores");
         RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://sistemamuestreos.000webhostapp.com/Queries/seleccionar_trabajadores.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -82,11 +109,11 @@ public class Trabajadores extends AppCompatActivity {
                     JSONArray jsonArray = jsonObject.getJSONArray("value");
                     for (int i = 0; i < jsonArray.length(); i++) {
                         String trabajadoresName = jsonArray.getJSONObject(i).get("APODO").toString();
-                        //if (trabajadoresName.contains("_")) trabajadoresName = trabajadoresName.replaceAll("_", " ");
+                        if (trabajadoresName.contains("_")) trabajadoresName = trabajadoresName.replaceAll("_", " ");
                         arraySpinner.add(trabajadoresName);
                     }
                 } catch (JSONException e) { e.printStackTrace();
-                errorMessageDialog("No sirvo");}
+                                            errorMessageDialog("No sirvo");}
             }
         }, new Response.ErrorListener() {
             @Override

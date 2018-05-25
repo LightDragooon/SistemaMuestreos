@@ -57,6 +57,7 @@ public class CrearUsuario extends AppCompatActivity {
     private void crearUsuario(){
         if(!txt_NombreUsuario.getText().toString().equals("")&&!txt_Password.getText().toString().equals("")){
             if(Check_tipoUsuario.isChecked()) {
+
                 createUser(ClaseGlobal.Usuario_Insert+
                         "?Usuario="+txt_NombreUsuario.getText().toString()+
                         "&Password="+txt_Password.getText().toString()+
