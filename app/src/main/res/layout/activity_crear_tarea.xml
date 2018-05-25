@@ -88,14 +88,6 @@
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="401dp" />
 
-    <Button
-        android:id="@+id/buttonSalir"
-        android:layout_width="89dp"
-        android:layout_height="39dp"
-        android:text="Salir"
-        tools:layout_editor_absoluteX="279dp"
-        tools:layout_editor_absoluteY="465dp" />
-
     <EditText
         android:id="@+id/editTextDescTarea"
         android:layout_width="215dp"
@@ -115,5 +107,13 @@
         android:textAppearance="@android:style/TextAppearance.Material.Small"
         tools:layout_editor_absoluteX="50dp"
         tools:layout_editor_absoluteY="127dp" />
+
+    <ImageButton
+        android:id="@+id/imageButtonSalir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        tools:layout_editor_absoluteX="337dp"
+        tools:layout_editor_absoluteY="0dp" />
 
 </android.support.constraint.ConstraintLayout>

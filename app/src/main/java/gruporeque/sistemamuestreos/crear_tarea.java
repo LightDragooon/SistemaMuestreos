@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.view.View;
@@ -24,7 +25,8 @@ import org.json.JSONObject;
 
 public class crear_tarea extends AppCompatActivity {
 
-    Button btn_new,btn_out;
+    Button btn_new;
+    ImageButton btn_out;
     EditText txt_name,txt_desc;
     RadioButton radioButtonTP, radioButtonTC, radioButtonTI;
 
@@ -32,7 +34,7 @@ public class crear_tarea extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_usuario);
-        btn_out = findViewById(R.id.btn_Salir);
+        btn_out = findViewById(R.id.imageButtonSalir);
         btn_new = findViewById(R.id.buttonCrearTarea);
         radioButtonTP = findViewById(R.id.radioButtonTP);
         radioButtonTC = findViewById(R.id.radioButtonTP);
@@ -49,8 +51,7 @@ public class crear_tarea extends AppCompatActivity {
         btn_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent abrirMenuAdministrador = new Intent(crear_tarea.this,MenuAdministrador.class);
-                startActivity(abrirMenuAdministrador);
+                onBackPressed();
             }
         });
     }
