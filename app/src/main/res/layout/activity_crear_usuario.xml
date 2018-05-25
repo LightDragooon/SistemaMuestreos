@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo1"
     tools:context=".CrearUsuario">
 
     <Button
@@ -14,6 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="79dp"
         android:text="Crear"
+        tools:background="@android:color/transparent"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="386dp" />
 
@@ -35,8 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="77dp"
         android:ems="10"
         android:inputType="textPersonName" />
 
@@ -44,35 +46,35 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/txt_NombreUsuario"
+        android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/txt_NombreUsuario"
-        android:layout_marginBottom="-47dp"
+        android:layout_marginTop="51dp"
         android:text="Nombre de usuario" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/txt_NombreUsuario"
-        android:layout_marginTop="209dp"
+        android:layout_centerVertical="true"
         android:text="Tipo de usuario" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/txt_Contraseña"
         android:layout_alignStart="@+id/txt_NombreUsuario"
-        android:layout_marginTop="112dp"
+        android:layout_marginBottom="-168dp"
         android:text="Contraseña" />
 
     <EditText
         android:id="@+id/txt_Contraseña"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/txt_NombreUsuario"
-        android:layout_below="@+id/textView3"
+        android:layout_marginTop="168dp"
         android:ems="10"
         android:inputType="textPersonName" />
 
@@ -80,8 +82,9 @@
         android:id="@+id/check_TipoUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/txt_NombreUsuario"
-        android:layout_centerVertical="true"
+        android:layout_marginBottom="198dp"
         android:text="Administrador" />
 
 </RelativeLayout>
