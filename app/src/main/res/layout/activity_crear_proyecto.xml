@@ -44,7 +44,7 @@
 
             <EditText
                 android:id="@+id/et_crearProyecto_finicio"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:clickable="true"
@@ -56,9 +56,18 @@
             <ImageButton
                 android:id="@+id/ibtn_crearProyecto_calendario"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@android:color/transparent"
                 app:srcCompat="@drawable/ic_calendar" />
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?android:attr/listDivider"
+                android:visibility="invisible" />
 
         </LinearLayout>
 
