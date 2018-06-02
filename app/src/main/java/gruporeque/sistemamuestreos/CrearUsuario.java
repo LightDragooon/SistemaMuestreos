@@ -33,7 +33,6 @@ public class CrearUsuario extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_usuario);
-        getActionBar().hide();
         btn_CrearUsuario = (Button)findViewById(R.id.btn_Crear);
         btn_salir = (Button)findViewById(R.id.btn_Salir);
         txt_NombreUsuario = (EditText)findViewById(R.id.txt_NombreUsuario);
