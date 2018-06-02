@@ -102,7 +102,8 @@ public class CrearUsuario extends AppCompatActivity {
     }
 
     private void errorMessageDialog(String message){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this).setMessage(message).setTitle("Error").setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(this).setMessage(message).setTitle("Error").setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 return;
