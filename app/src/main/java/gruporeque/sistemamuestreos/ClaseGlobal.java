@@ -2,7 +2,7 @@ package gruporeque.sistemamuestreos;
 
 public class ClaseGlobal {
 
-    public static final String HOST_URL = "https://sistemamuestreos.000webhostapp.com/";
+    public static final String HOST_URL = "https://proyecto2reque.000webhostapp.com/";
 
     public static final String Usuario_Insert = HOST_URL+"Queries/insertar_usuario.php";
     public static final String Tarea_Insert = HOST_URL+"Queries/insertar_tarea.php";
