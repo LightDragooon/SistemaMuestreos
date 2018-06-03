@@ -1,9 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo_pantalla_general"
     tools:context=".modificar_trabajador">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/textViewTitulo4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
+        android:text="Modificar Trabajador"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="26dp" />
+
+    <Button
+        android:id="@+id/btn_ModificarTrabajador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="71dp"
+        android:layout_marginStart="132dp"
+        android:text="Modificar"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="465dp" />
+
+    <Button
+        android:id="@+id/btn_AtrasModificarTrabajador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_ModificarTrabajador"
+        android:layout_marginTop="-71dp"
+        android:layout_toEndOf="@+id/txt_ModificarOcupacion"
+        android:text="Atrás"
+        tools:layout_editor_absoluteX="270dp"
+        tools:layout_editor_absoluteY="502dp" />
+
+    <EditText
+        android:id="@+id/txt_ModificarApodo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textView18"
+        android:layout_marginTop="190dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="124dp" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txt_ModificarApodo"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="-190dp"
+        android:layout_marginStart="76dp"
+        android:text="Apodo"
+        tools:layout_editor_absoluteX="89dp"
+        tools:layout_editor_absoluteY="97dp" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="256dp"
+        android:layout_marginEnd="-132dp"
+        android:layout_toStartOf="@+id/btn_ModificarTrabajador"
+        android:text="Ocupación"
+        tools:layout_editor_absoluteX="89dp"
+        tools:layout_editor_absoluteY="225dp" />
+
+    <EditText
+        android:id="@+id/txt_ModificarOcupacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView18"
+        android:layout_below="@+id/textView18"
+        android:layout_marginTop="-256dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="260dp" />
+
+</RelativeLayout>
