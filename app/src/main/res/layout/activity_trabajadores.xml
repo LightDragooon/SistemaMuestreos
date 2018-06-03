@@ -26,14 +26,6 @@
         android:layout_marginBottom="24dp"
         android:text="Atrás" />
 
-    <ListView
-        android:id="@+id/listview_Trabajadores"
-        android:layout_width="310dp"
-        android:layout_height="239dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="89dp" />
-
     <Button
         android:id="@+id/btn_ModificarTrabajador"
         android:layout_width="wrap_content"
@@ -52,4 +44,12 @@
         android:layout_alignTop="@+id/btn_ModificarTrabajador"
         android:layout_marginEnd="68dp"
         android:text="Eliminar" />
+
+    <Spinner
+        android:id="@+id/spinnerTrabajadores"
+        android:layout_width="233dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="104dp" />
 </RelativeLayout>

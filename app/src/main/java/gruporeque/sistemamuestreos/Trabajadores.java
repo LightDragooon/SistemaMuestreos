@@ -34,6 +34,7 @@ import org.json.JSONArray;
 import java.util.ArrayList;
 import java.util.List;
 import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import static java.security.AccessController.getContext;
@@ -44,7 +45,8 @@ public class Trabajadores extends AppCompatActivity {
     Button btnAtrasTrabajadores;
     Button btnCrearTrabajadores;
     Button btnModificarTrabajador;
-    ListView listTrabajadores;
+    Button btnEliminarTrabajador;
+    Spinner spinnerBreteadores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,25 +55,19 @@ public class Trabajadores extends AppCompatActivity {
         btnAtrasTrabajadores = (Button)findViewById(R.id.btn_AtrasTrabajadores);
         btnCrearTrabajadores=(Button)findViewById(R.id.btn_TrabajadoresCrearTrabajador);
         btnModificarTrabajador=(Button)findViewById(R.id.btn_ModificarTrabajador);
-        listTrabajadores = (ListView)findViewById(R.id.listview_Trabajadores);
+        btnEliminarTrabajador=(Button)findViewById(R.id.btn_EliminarTrabajador);
+        spinnerBreteadores = (Spinner)findViewById(R.id.spinnerTrabajadores);
 
-        List<String> listaAux = new ArrayList<>();
-        listaAux.add("Lista de trabajadores");
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, listaAux);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
-        listTrabajadores.setAdapter(arrayAdapter);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, obtenerTrabajadores());
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerBreteadores.setAdapter(arrayAdapter);
 
-        /*listTrabajadores.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        btnEliminarTrabajador.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                errorMessageDialog("Me seleccionaron");
+            public void onClick(View v) {
+                eliminarTrabajador();
             }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                errorMessageDialog("No me seleccionaron");
-            }
-        });*/
+        });
 
         btnModificarTrabajador.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +83,6 @@ public class Trabajadores extends AppCompatActivity {
                 startActivity(abrirMenuAdministrador);
             }
         });
-
         btnCrearTrabajadores.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,11 +93,10 @@ public class Trabajadores extends AppCompatActivity {
     }
 
     private List<String> obtenerTrabajadores(){
-        String URL = ClaseGlobal.Usuarios_Select;
         final List<String> arraySpinner = new ArrayList<>();
         arraySpinner.add("Lista de trabajadores");
         RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://sistemamuestreos.000webhostapp.com/Queries/seleccionar_trabajadores.php", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, ClaseGlobal.Trabajadores_Select, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -110,11 +104,12 @@ public class Trabajadores extends AppCompatActivity {
                     JSONArray jsonArray = jsonObject.getJSONArray("value");
                     for (int i = 0; i < jsonArray.length(); i++) {
                         String trabajadoresName = jsonArray.getJSONObject(i).get("APODO").toString();
+                        trabajadoresName = trabajadoresName + "   ";
+                        trabajadoresName = trabajadoresName + jsonArray.getJSONObject(i).get("ID_OPERADOR").toString();
                         if (trabajadoresName.contains("_")) trabajadoresName = trabajadoresName.replaceAll("_", " ");
                         arraySpinner.add(trabajadoresName);
                     }
-                } catch (JSONException e) { e.printStackTrace();
-                                            errorMessageDialog("No sirvo");}
+                } catch (JSONException e) { e.printStackTrace();}
             }
         }, new Response.ErrorListener() {
             @Override
@@ -123,6 +118,32 @@ public class Trabajadores extends AppCompatActivity {
             }
         }); queue.add(stringRequest);
         return arraySpinner;
+    }
+
+
+    private void eliminarTrabajador(){
+        if(!spinnerBreteadores.getSelectedItem().toString().equals("Lista de trabajadores")){
+            String[] separado = spinnerBreteadores.getSelectedItem().toString().split("   ");
+            deleteTrabajador(ClaseGlobal.Eliminar_Trabajador + "?IdTrabajador=" + separado[1]);
+        }
+        else{
+            errorMessageDialog("Seleccione un trabajador para poder eliminarlo");
+        }
+    }
+
+    private void deleteTrabajador(String URL){
+        RequestQueue queue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                deleteTrabajadorAux(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                errorMessageDialog("No se pudo conectar al servidor");
+            }
+        });queue.add(stringRequest);
     }
 
 
@@ -148,5 +169,14 @@ public class Trabajadores extends AppCompatActivity {
         dialog.show();
     }
 
+    private void deleteTrabajadorAux(String response){
+        try{
+            JSONObject jsonObject = new JSONObject(response);
+            if(jsonObject.getString("status").equals("false") ) errorMessageDialog("No se ha podido eliminar el trabajador");
+            else correctMessageDialog("Se ha eliminado el trabajador exitosamente");
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+    }
 
 }

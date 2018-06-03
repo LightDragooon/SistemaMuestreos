@@ -57,8 +57,6 @@ public class crear_trabajador extends AppCompatActivity {
                     "?NombreOperador="+txtNombreOperador.getText().toString()+
                     "&ApodoOperador="+txtApodoOperador.getText().toString()+
                     "&OcupacionOperador="+txtOcupacionOperador.getText().toString());
-
-
         }else{
             errorMessageDialog("Llene todos las casillas para crear el trabajador");
         }

@@ -33,7 +33,8 @@
         <activity android:name=".ver_proyecto" />
         <activity android:name=".ver_personas" />
         <activity android:name=".seleccionar_persona" />
-        <activity android:name=".ver_operaciones"></activity>
+        <activity android:name=".ver_operaciones" />
+        <activity android:name=".modificar_trabajador"></activity>
     </application>
 
 </manifest>
