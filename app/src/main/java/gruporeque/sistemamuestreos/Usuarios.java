@@ -29,7 +29,7 @@ import java.util.List;
 
 public class Usuarios extends AppCompatActivity {
 
-    Button btnCrearUsuario,btnAtrasUsuarios;
+    Button btnCrearUsuario,btnAtrasUsuarios,btnEliminarUser;
 
     Spinner spinnerUsuarios;
 
@@ -40,20 +40,14 @@ public class Usuarios extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuarios);
 
+        btnEliminarUser = (Button)findViewById(R.id.btnEliminarUsuario);
         btnAtrasUsuarios = (Button) findViewById(R.id.btn_AtrasUsuarios);
         btnCrearUsuario = (Button) findViewById(R.id.btn_UsuariosCrearUsuario);
-
         spinnerUsuarios=(Spinner)findViewById(R.id.UsuariosSpinner);
-        //listaPrueba=getUsuarios();
-        //errorMessageDialog(listaPrueba.get(3).toString());
-       //listaUsuarios.add("Lista de usuarios");
-        List<String> listaUsuarios = new ArrayList<>();
-        listaUsuarios.add("prueba1");
-        listaUsuarios.add("prueba2");
-        listaUsuarios.add("prueba3");
-        listaUsuarios.add("prueba4");
+
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, getUsuarios());
         //arrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerUsuarios.setAdapter(arrayAdapter);
 
         btnAtrasUsuarios.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +62,13 @@ public class Usuarios extends AppCompatActivity {
             public void onClick(View v) {
                 Intent abrirCrearUsuario = new Intent(Usuarios.this,CrearUsuario.class);
                 startActivity(abrirCrearUsuario);
+            }
+        });
+
+        btnEliminarUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eliminarUsuario();
             }
         });
 
@@ -114,4 +115,50 @@ public class Usuarios extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
+    private void correctMessageDialog(String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this).setMessage(message).setTitle("Éxito").setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                return;
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void eliminarUsuario(){
+        if(!spinnerUsuarios.getSelectedItem().toString().equals("Seleccione un Usuario")){
+            deleteUser(ClaseGlobal.Eliminar_Usuario+"?Usuario="+spinnerUsuarios.getSelectedItem().toString());
+        }
+        else{
+            errorMessageDialog("Seleccione un usuario para poder eliminarlo");
+        }
+    }
+
+    private void deleteUser(String URL){
+        RequestQueue queue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                deleteUserAux(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                errorMessageDialog("No se pudo conectar al servidor");
+            }
+        });queue.add(stringRequest);
+    }
+
+    private void deleteUserAux(String response){
+        try{
+            JSONObject jsonObject = new JSONObject(response);
+            if(jsonObject.getString("status").equals("false") ) errorMessageDialog("No se ha podido eliminar el usuario");
+            else correctMessageDialog("Se ha eliminado el usuario exitosamente");
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+    }
 }
+
