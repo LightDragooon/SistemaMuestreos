@@ -29,7 +29,11 @@
         <activity android:name=".crear_operaciones" />
         <activity android:name=".Proyectos" />
         <activity android:name=".crear_tarea" />
-        <activity android:name=".Tareas"></activity>
+        <activity android:name=".Tareas" />
+        <activity android:name=".ver_proyecto" />
+        <activity android:name=".ver_personas" />
+        <activity android:name=".seleccionar_persona" />
+        <activity android:name=".ver_operaciones"></activity>
     </application>
 
 </manifest>

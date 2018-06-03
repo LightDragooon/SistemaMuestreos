@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Sistema Muestreos</string>
-    <string name="title_activity_menu_administrador">MenuAdministrador</string>
+    <string name="title_activity_menu_administrador">Menu Administrador</string>
     <string name="ident_proy">Identiicador del proyecto</string>
     <string name="desc_proy">Descripción del proyecto</string>
     <string name="nomb_cliente">Nombre del cliente</string>
@@ -12,6 +12,16 @@
     <string name="muestreo">Muestreo</string>
     <string name="tareas">Tareas</string>
     <string name="trabajadores">Trabajadores</string>
+    <string name="analistas">Analistas</string>
+    <string name="operacioes">Operaciones</string>
 
+    <string name="agregarNuevo">Agregar Nuevo</string>
+
+    <string name="tareasProductivas">Tareas Productivas</string>
+    <string name="tareasImproductivas">Tareas Improductivas</string>
+    <string name="tareasColaborativas">Tareas Colaborativas</string>
+    <string name="resumenTareas">Resumen Tareas</string>
+    <string name="productividadDia">Productividad por día</string>
+    <string name="estadistica">Estadística</string>
 
 </resources>
