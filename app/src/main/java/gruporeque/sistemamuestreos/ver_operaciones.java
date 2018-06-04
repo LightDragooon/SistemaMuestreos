@@ -1,9 +1,11 @@
 package gruporeque.sistemamuestreos;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -42,6 +44,15 @@ public class ver_operaciones extends AppCompatActivity {
         btn_verProductividadDia = (Button) findViewById(R.id.btn_verProductividadDia);
         btn_verEstadistica = (Button) findViewById(R.id.btn_verEstadistica);
 
+        btn_verResumenTareas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent abrirVerElementos = new Intent(ver_operaciones.this,ver_consolidado_tareas.class);
+                //abrirVerElementos.putExtra("id", idProyecto);
+                //abrirVerElementos.putExtra("tipo", 2);//Operaciones
+                startActivity(abrirVerElementos);
+            }
+        });
 
         getOperacion();
     }
