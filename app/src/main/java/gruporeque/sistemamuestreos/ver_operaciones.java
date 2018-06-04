@@ -48,8 +48,35 @@ public class ver_operaciones extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent abrirVerElementos = new Intent(ver_operaciones.this,ver_consolidado_tareas.class);
-                //abrirVerElementos.putExtra("id", idProyecto);
+                abrirVerElementos.putExtra("id", idOperacion);
                 //abrirVerElementos.putExtra("tipo", 2);//Operaciones
+                startActivity(abrirVerElementos);
+            }
+        });
+
+        btn_verTareasProdutivas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent abrirVerElementos = new Intent(ver_operaciones.this,ver_consolidado_tareas_productivas.class);
+                abrirVerElementos.putExtra("id", idOperacion);
+                startActivity(abrirVerElementos);
+            }
+        });
+
+        btn_verTareasImproductivas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent abrirVerElementos = new Intent(ver_operaciones.this,ver_consolidado_tareas.class);
+                abrirVerElementos.putExtra("id", idOperacion);
+                startActivity(abrirVerElementos);
+            }
+        });
+
+        btn_verTareasColaborativas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent abrirVerElementos = new Intent(ver_operaciones.this,ver_consolidado_tareas.class);
+                abrirVerElementos.putExtra("id", idOperacion);
                 startActivity(abrirVerElementos);
             }
         });

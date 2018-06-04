@@ -22,4 +22,5 @@ public class ClaseGlobal {
     public static final String Modificar_Trabajador = HOST_URL + "Queries/modificar_trabajador.php";
     public static final String Iniciar_Sesion = HOST_URL + "Queries/iniciar_sesion.php";
     public static final String Proyectos_Operaciones_Select = HOST_URL + "Queries/seleccionar_proyectos_operaciones.php";
+    public static final String Consolidado_T_Select = HOST_URL + "Queries/seleccionar_consolidado_T.php";
 }
