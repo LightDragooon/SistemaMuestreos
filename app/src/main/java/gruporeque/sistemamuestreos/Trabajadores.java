@@ -42,6 +42,7 @@ import static java.security.AccessController.getContext;
 
 public class Trabajadores extends AppCompatActivity {
 
+    public static String OperadorAModificar;
     Button btnAtrasTrabajadores;
     Button btnCrearTrabajadores;
     Button btnModificarTrabajador;
@@ -70,9 +71,10 @@ public class Trabajadores extends AppCompatActivity {
         });
 
         btnModificarTrabajador.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-
+                modificarTrabajador();
             }
         });
 
@@ -120,6 +122,17 @@ public class Trabajadores extends AppCompatActivity {
         return arraySpinner;
     }
 
+    private void modificarTrabajador(){
+        if(!spinnerBreteadores.getSelectedItem().toString().equals("Lista de trabajadores")){
+            String[] separado = spinnerBreteadores.getSelectedItem().toString().split("   ");
+            OperadorAModificar=separado[1];
+            Intent abrirModificar = new Intent(Trabajadores.this,modificar_trabajador.class);
+            startActivity(abrirModificar);
+        }
+        else{
+            errorMessageDialog("Seleccione un trabajador para poder modificarlo.");
+        }
+    }
 
     private void eliminarTrabajador(){
         if(!spinnerBreteadores.getSelectedItem().toString().equals("Lista de trabajadores")){
