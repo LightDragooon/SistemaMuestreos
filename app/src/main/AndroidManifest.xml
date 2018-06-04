@@ -34,7 +34,11 @@
         <activity android:name=".ver_elementos" />
         <activity android:name=".seleccionar_persona" />
         <activity android:name=".ver_operaciones" />
-        <activity android:name=".modificar_trabajador"></activity>
+        <activity android:name=".modificar_trabajador" />
+        <activity android:name=".ver_consolidado_tareas_productivas" />
+        <activity android:name=".ver_consolidado_tareas_improductivas" />
+        <activity android:name=".ver_consolidado_tareas_colaborativas" />
+        <activity android:name=".ver_consolidado_tareas"></activity>
     </application>
 
 </manifest>
