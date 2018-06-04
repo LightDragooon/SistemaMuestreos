@@ -73,10 +73,12 @@ public class Tareas extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("value");
                     for (int i = 0; i < jsonArray.length(); i++) {
-                        String projectName = jsonArray.getJSONObject(i).get("NOMBRE_TAREA").toString();
-                        if (projectName.contains("_")) projectName = projectName.replaceAll("_", " ");
-                        arraySpinner.add(projectName);
-                        listaPrueba.add(projectName);
+                        String workName = jsonArray.getJSONObject(i).get("ID_TAREA").toString();
+                        workName = workName+"   ";
+                        workName = workName+ jsonArray.getJSONObject(i).get("NOMBRE_TAREA").toString();
+                        if (workName.contains("_")) workName = workName.replaceAll("_", " ");
+                        arraySpinner.add(workName);
+                        listaPrueba.add(workName);
                     }
                 } catch (JSONException e) { e.printStackTrace(); }
             }
