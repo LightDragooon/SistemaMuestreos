@@ -115,7 +115,8 @@ public class Tareas extends AppCompatActivity {
 
     private void eliminarTarea(){
         if(!spinnerTareas.getSelectedItem().toString().equals("Seleccione una Tarea")){
-            deleteWork(ClaseGlobal.Eliminar_Tarea+"?Tarea="+spinnerTareas.getSelectedItem().toString());
+            String[] separado = spinnerTareas.getSelectedItem().toString().split("   ");
+            deleteWork(ClaseGlobal.Eliminar_Tarea+"?IdTarea="+separado[0]);
         }
         else{
             errorMessageDialog("Seleccione una tarea para poder eliminarlo");
@@ -140,8 +141,9 @@ public class Tareas extends AppCompatActivity {
     private void deleteWorkAux(String response){
         try{
             JSONObject jsonObject = new JSONObject(response);
-            if(jsonObject.getString("status").equals("false") ) errorMessageDialog("No se ha podido eliminar el usuario");
+            if(jsonObject.getString("status").equals("false") ) errorMessageDialog("No se ha podido eliminar la tarea");
             else correctMessageDialog("Se ha eliminado el usuario exitosamente");
+            getTareas();
         }catch (JSONException e){
             e.printStackTrace();
         }
