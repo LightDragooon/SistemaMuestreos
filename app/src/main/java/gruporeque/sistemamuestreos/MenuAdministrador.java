@@ -20,7 +20,6 @@ public class MenuAdministrador extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_administrador);
         btn_usuarios = (ImageButton)findViewById(R.id.btn_Usuarios);
-        //btn_salir = (ImageButton)findViewById(R.id.btn_SalirAdm);
         btn_trabajadores=(ImageButton)findViewById(R.id.btn_Trabajadores);
         btn_proyectos = (ImageButton)findViewById(R.id.btn_Proyectos);
         btn_tareas = (ImageButton)findViewById(R.id.btn_Tareas);
@@ -28,7 +27,7 @@ public class MenuAdministrador extends AppCompatActivity {
         btn_tareas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent abrirTareas = new Intent(MenuAdministrador.this,crear_tarea.class);
+                Intent abrirTareas = new Intent(MenuAdministrador.this,Tareas.class);
                 startActivity(abrirTareas);
             }
         });

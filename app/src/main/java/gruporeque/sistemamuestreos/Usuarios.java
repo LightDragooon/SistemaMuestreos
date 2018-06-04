@@ -33,7 +33,6 @@ public class Usuarios extends AppCompatActivity {
 
     Spinner spinnerUsuarios;
 
-
     List<String> listaPrueba = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -4,6 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo_pantalla_general"
     tools:context=".Tareas">
+
+    <Button
+        android:id="@+id/btn_TareasCrearTarea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="12dp"
+        android:text="Crear tarea" />
+
+    <Spinner
+        android:id="@+id/TareasSpinner"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="82dp" />
+
+    <Button
+        android:id="@+id/btnEliminarTarea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="29dp"
+        android:layout_marginStart="26dp"
+        android:text="Eliminar tarea" />
 
 </RelativeLayout>
