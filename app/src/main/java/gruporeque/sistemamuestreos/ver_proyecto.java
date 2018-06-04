@@ -1,10 +1,11 @@
 package gruporeque.sistemamuestreos;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -18,9 +19,6 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ver_proyecto extends AppCompatActivity {
     TextView nombreP, cliente, fechaI, fechaF, desc;
@@ -43,6 +41,35 @@ public class ver_proyecto extends AppCompatActivity {
         verTrabajadores = (ImageButton) findViewById(R.id.ibtn_verProyecto_trabajador);
         verOperaciones = (ImageButton) findViewById(R.id.ibtn_verProyecto_operaciones);
 
+        verAnalistas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent abrirVerElementos = new Intent(ver_proyecto.this,ver_elementos.class);
+                abrirVerElementos.putExtra("id", idProyecto);
+                abrirVerElementos.putExtra("tipo", 0);//Analistas
+                startActivity(abrirVerElementos);
+            }
+        });
+
+        verTrabajadores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent abrirVerElementos = new Intent(ver_proyecto.this,ver_elementos.class);
+                abrirVerElementos.putExtra("id", idProyecto);
+                abrirVerElementos.putExtra("tipo", 1);//Trabajadores
+                startActivity(abrirVerElementos);
+            }
+        });
+
+        verOperaciones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent abrirVerElementos = new Intent(ver_proyecto.this,ver_elementos.class);
+                abrirVerElementos.putExtra("id", idProyecto);
+                abrirVerElementos.putExtra("tipo", 2);//Operaciones
+                startActivity(abrirVerElementos);
+            }
+        });
         getProyecto();
     }
 
@@ -55,11 +82,11 @@ public class ver_proyecto extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("value");
-                    nombreP.setText(jsonArray.getJSONObject(0).get("NOMBRE_PROYECTO").toString());
-                    cliente.setText(jsonArray.getJSONObject(0).get("CLIENTE").toString());
-                    fechaI.setText(jsonArray.getJSONObject(0).get("FECHA_INICIO").toString());
-                    fechaF.setText(jsonArray.getJSONObject(0).get("FECHA_FIN").toString());
-                    desc.setText(jsonArray.getJSONObject(0).get("DESCRIPCION").toString());
+                    nombreP.setText(repairString(jsonArray.getJSONObject(0).get("NOMBRE_PROYECTO").toString()));
+                    cliente.setText(repairString(jsonArray.getJSONObject(0).get("CLIENTE").toString()));
+                    fechaI.setText(repairString(jsonArray.getJSONObject(0).get("FECHA_INICIO").toString()));
+                    fechaF.setText(repairString(jsonArray.getJSONObject(0).get("FECHA_FIN").toString()));
+                    desc.setText(repairString(jsonArray.getJSONObject(0).get("DESCRIPCION").toString()));
 
                 } catch (JSONException e) { e.printStackTrace(); }
             }
@@ -79,5 +106,11 @@ public class ver_proyecto extends AppCompatActivity {
         });
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    private String repairString (String s){
+        if (s.contains("_"))
+            s = s.replaceAll("_", " ");
+        return s;
     }
 }

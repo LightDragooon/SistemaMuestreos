@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -29,7 +27,7 @@ import java.util.List;
 public class Proyectos extends AppCompatActivity {
 
 
-    Button btnCrearProyecto, btnVerProyecto;
+    Button btnCrearProyecto, btnVerProyecto, btnEliminarProyecto;
     Spinner spinnerProyectos;
     ArrayList<Integer> idList = new ArrayList<>();
     @Override
@@ -39,6 +37,7 @@ public class Proyectos extends AppCompatActivity {
 
         btnCrearProyecto = (Button) findViewById(R.id.btn_ProyectosCrearProyectos);
         btnVerProyecto = (Button) findViewById(R.id.btn_ProyectosVerProyectos);
+        btnEliminarProyecto = (Button) findViewById(R.id.btn_ProyectosEliminarProyectos);
         spinnerProyectos = (Spinner)findViewById(R.id.spinnerProyectos);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, getProyectos());
@@ -63,6 +62,13 @@ public class Proyectos extends AppCompatActivity {
             }
         });
 
+        btnEliminarProyecto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eliminarProyecto();
+            }
+        });
+
     }
 
     private List<String> getProyectos() {
@@ -81,8 +87,8 @@ public class Proyectos extends AppCompatActivity {
 
                         String projectName = jsonArray.getJSONObject(i).get("ID_PROYECTO").toString() + "-" + jsonArray.getJSONObject(i).get("NOMBRE_PROYECTO").toString();
                         if (projectName.contains("_")) projectName = projectName.replaceAll("_", " ");
-                            arraySpinner.add(projectName);
-                            idList.add(Integer.parseInt(jsonArray.getJSONObject(i).get("ID_PROYECTO").toString()));
+                        arraySpinner.add(projectName);
+                        idList.add(Integer.parseInt(jsonArray.getJSONObject(i).get("ID_PROYECTO").toString()));
                     }
                 } catch (JSONException e) { e.printStackTrace(); }
             }
@@ -117,21 +123,21 @@ public class Proyectos extends AppCompatActivity {
         dialog.show();
     }
 
-    private void eliminarUsuario(){
-        if(!spinnerProyectos.getSelectedItem().toString().equals("Seleccione un Usuario")){
-            deleteUser(ClaseGlobal.Eliminar_Usuario+"?Usuario="+spinnerProyectos.getSelectedItem().toString());
+    private void eliminarProyecto(){
+        if(!spinnerProyectos.getSelectedItem().toString().equals("Seleccione un Proyecto")){
+            deleteProyecto(ClaseGlobal.Eliminar_Proyecto+"?Id="+Integer.toString(idList.get(spinnerProyectos.getSelectedItemPosition())));
         }
         else{
             errorMessageDialog("Seleccione un proyecto para poder eliminarlo");
         }
     }
 
-    private void deleteUser(String URL){
+    private void deleteProyecto(String URL){
         RequestQueue queue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                deleteUserAux(response);
+                deleteProyectoAux(response);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -141,7 +147,7 @@ public class Proyectos extends AppCompatActivity {
         });queue.add(stringRequest);
     }
 
-    private void deleteUserAux(String response){
+    private void deleteProyectoAux(String response){
         try{
             JSONObject jsonObject = new JSONObject(response);
             if(jsonObject.getString("status").equals("false") ) errorMessageDialog("No se ha podido eliminar el proyecto");

@@ -31,7 +31,7 @@
         <activity android:name=".crear_tarea" />
         <activity android:name=".Tareas" />
         <activity android:name=".ver_proyecto" />
-        <activity android:name=".ver_personas" />
+        <activity android:name=".ver_elementos" />
         <activity android:name=".seleccionar_persona" />
         <activity android:name=".ver_operaciones" />
         <activity android:name=".modificar_trabajador"></activity>
