@@ -85,13 +85,13 @@ public class Usuarios extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("value");
                     for (int i = 0; i < jsonArray.length(); i++) {
-                        String projectName = jsonArray.getJSONObject(i).get("NOMBRE_USUARIO").toString();
-                        if (projectName.contains("_")) projectName = projectName.replaceAll("_", " ");
-                        arraySpinner.add(projectName);
-                        listaPrueba.add(projectName);
-                       //errorMessageDialog(listaPrueba.get(i).toString());
+                        String userName = jsonArray.getJSONObject(i).get("NOMBRE_USUARIO").toString();
+                        userName = userName+"   ";
+                        userName = userName+ jsonArray.getJSONObject(i).get("ID_USUARIO").toString();
+                        if (userName.contains("_")) userName = userName.replaceAll("_", " ");
+                        arraySpinner.add(userName);
+                        listaPrueba.add(userName);
                     }
-                    //errorMessageDialog(arraySpinner.get(2).toString());
                 } catch (JSONException e) { e.printStackTrace(); }
             }
         }, new Response.ErrorListener() {
@@ -100,7 +100,6 @@ public class Usuarios extends AppCompatActivity {
                 errorMessageDialog("No se puede conectar al servidor en estos momentos.");
             }
         }); queue.add(stringRequest);
-        //errorMessageDialog(arraySpinner.get(1).toString());
         return arraySpinner;
 
     }
@@ -128,7 +127,8 @@ public class Usuarios extends AppCompatActivity {
 
     private void eliminarUsuario(){
         if(!spinnerUsuarios.getSelectedItem().toString().equals("Seleccione un Usuario")){
-            deleteUser(ClaseGlobal.Eliminar_Usuario+"?Usuario="+spinnerUsuarios.getSelectedItem().toString());
+            String[] separado = spinnerUsuarios.getSelectedItem().toString().split("   ");
+            deleteUser(ClaseGlobal.Eliminar_Usuario+"?IdUsuario="+separado[1]);
         }
         else{
             errorMessageDialog("Seleccione un usuario para poder eliminarlo");

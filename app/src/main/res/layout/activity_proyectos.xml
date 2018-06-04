@@ -1,38 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_pantalla_general"
+    android:orientation="vertical"
     tools:context=".Usuarios">
-
-    <Button
-        android:id="@+id/btn_AtrasProyectos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="22dp"
-        android:layout_marginEnd="30dp"
-        android:text="Atrás"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
 
     <Button
         android:id="@+id/btn_ProyectosCrearProyectos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/btn_AtrasProyectos"
-        android:layout_alignParentTop="true"
         android:layout_marginTop="12dp"
+        android:layout_gravity="right"
         android:text="Crear Proyecto" />
 
-    <ListView
-        android:id="@+id/list_Proyectos"
-        android:layout_width="336dp"
-        android:layout_height="288dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="69dp" />
-</RelativeLayout>
+    <Spinner
+        android:id="@+id/spinnerProyectos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:id="@+id/divider5"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="?android:attr/listDivider"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/construction_image" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="?android:attr/listDivider"
+        android:visibility="invisible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_ProyectosEliminarProyectos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:text="Eliminar Proyecto" />
+
+        <Button
+            android:id="@+id/btn_ProyectosVerProyectos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ver Proyectos" />
+    </LinearLayout>
+
+</LinearLayout>

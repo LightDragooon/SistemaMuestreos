@@ -18,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,7 +27,7 @@ import java.util.Calendar;
 public class crear_proyecto extends AppCompatActivity implements View.OnClickListener{
 
     private static final String CERO = "0";
-    private static final String BARRA = "/";
+    private static final String GUION = "-";
 
     //Calendario para obtener fecha & hora
     public final Calendar c = Calendar.getInstance();
@@ -72,11 +73,12 @@ public class crear_proyecto extends AppCompatActivity implements View.OnClickLis
                 !et_cliente.getText().toString().equals("")&&
                 !et_fechaI.getText().toString().equals("")){
             //Hacer el php
-            guardarProyecto(ClaseGlobal.Usuario_Insert+
-                "?Identificador="+et_identificador.getText().toString()+
-                    "&Desc="+et_desc.getText().toString()+
-                    "&Cliente="+et_cliente.getText().toString()+
-                    "&FechaI="+et_fechaI.getText().toString());
+            guardarProyecto(ClaseGlobal.Proyecto_Insert+
+                    "?NOMBRE_PROYECTO="+repairStringReverse(et_identificador.getText().toString())+
+                    "&DESCRIPCION="+repairStringReverse(et_desc.getText().toString())+
+                    "&CLIENTE="+repairStringReverse(et_cliente.getText().toString())+
+                    "&FECHA_INICIO="+repairStringReverse(et_fechaI.getText().toString())+
+                    "&FECHA_FIN="+repairStringReverse(et_fechaI.getText().toString()));
         }else{
             errorMessageDialog("Llene todos las casillas para crear el proyecto");
         }
@@ -87,7 +89,13 @@ public class crear_proyecto extends AppCompatActivity implements View.OnClickLis
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                guardarProyectoAux(response);
+                try{
+                    JSONObject jsonObject = new JSONObject(response);
+                    if(jsonObject.getString("status").equals("false") ) errorMessageDialog("No se podido crear el proyecto");
+                    else correctMessageDialog("Se ha creado el proyecto exitosamente");
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
             }
         }, new Response.ErrorListener() {
             @Override
@@ -97,14 +105,10 @@ public class crear_proyecto extends AppCompatActivity implements View.OnClickLis
         });queue.add(stringRequest);
     }
 
-    private void guardarProyectoAux(String response){
-        try{
-            JSONObject jsonObject = new JSONObject(response);
-            if(jsonObject.getString("status").equals("false") ) errorMessageDialog("No se podido crear el proyecto");
-            else correctMessageDialog("Se ha creado el proyecto exitosamente");
-        }catch (JSONException e){
-            e.printStackTrace();
-        }
+    private String repairStringReverse (String s){
+        if (s.contains(" "))
+            s = s.replaceAll(" ", "_");
+        return s;
     }
 
     @Override
@@ -127,7 +131,7 @@ public class crear_proyecto extends AppCompatActivity implements View.OnClickLis
                 //Formateo el mes obtenido: antepone el 0 si son menores de 10
                 String mesFormateado = (mesActual < 10)? CERO + String.valueOf(mesActual):String.valueOf(mesActual);
                 //Muestro la fecha con el formato deseado
-                et_fechaI.setText(diaFormateado + BARRA + mesFormateado + BARRA + year);
+                et_fechaI.setText(year + GUION + mesFormateado + GUION + diaFormateado);
 
 
             }
