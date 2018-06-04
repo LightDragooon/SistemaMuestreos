@@ -15,13 +15,10 @@ public class ClaseGlobal {
     public static final String Eliminar_Proyecto = HOST_URL+"Queries/eliminar_proyecto.php";
     public static final String Proyectos_Select = HOST_URL+"Queries/seleccionar_proyectos.php";
     public static final String Eliminar_Trabajador = HOST_URL + "Queries/eliminar_trabajador.php";
-<<<<<<< HEAD
     public static final String Eliminar_Tarea = HOST_URL + "Queries/eliminar_tarea.php";
-=======
     public static final String Proyectos_Usuarios_Select = HOST_URL + "Queries/seleccionar_proyectos_usuarios.php";
     public static final String Operaciones_Select = HOST_URL + "Queries/seleccionar_operaciones.php";
     public static final String Operaciones_Insert= HOST_URL + "Queries/insertar_operacion.php";
     public static final String Modificar_Trabajador = HOST_URL + "Queries/modificar_trabajador.php";
     public static final String Iniciar_Sesion = HOST_URL + "Queries/iniciar_sesion.php";
->>>>>>> 5c47c47569ef6dec3f221262c782e2035673e30d
 }
