@@ -12,16 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="@string/nombreOper"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/et_operacion_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="@string/descOper"
+        android:inputType="textPersonName" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,8 +34,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:hint="@string/fechaIOper"
+            android:inputType="textPersonName" />
 
         <ImageButton
             android:id="@+id/ib_operacion_fechaI"
@@ -57,8 +57,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:hint="@string/fechaFOper"
+            android:inputType="textPersonName" />
 
         <ImageButton
             android:id="@+id/ib_operacion_fechaF"

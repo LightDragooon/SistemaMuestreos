@@ -24,4 +24,9 @@
     <string name="productividadDia">Productividad por día</string>
     <string name="estadistica">Estadística</string>
 
+    <string name="nombreOper">Nombre de la operación</string>
+    <string name="descOper">Descripción de la operación</string>
+    <string name="fechaIOper">Fecha de Inicio</string>
+    <string name="fechaFOper">Fecha de Fin</string>
+
 </resources>

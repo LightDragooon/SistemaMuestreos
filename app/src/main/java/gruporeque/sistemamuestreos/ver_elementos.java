@@ -29,7 +29,8 @@ public class ver_elementos extends AppCompatActivity {
     int idProyecto, tipoElemento;
     TextView tv_descSeleccion;
     Spinner spinner_elementos;
-    Button btn_nuevoElemento;
+    Button btn_nuevoElemento, btn_verOperacion;
+    ArrayList<Integer> idList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,7 @@ public class ver_elementos extends AppCompatActivity {
         tv_descSeleccion = (TextView) findViewById(R.id.tv_descSeleccion);
         spinner_elementos = (Spinner) findViewById(R.id.spinner_elementos);
         btn_nuevoElemento = (Button) findViewById(R.id.btn_nuevoElemento);
-
+        btn_verOperacion = (Button) findViewById(R.id.btn_verOperacion);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, getElemento());
         //arrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -77,6 +78,19 @@ public class ver_elementos extends AppCompatActivity {
             }
         });
 
+        btn_verOperacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int myId = spinner_elementos.getSelectedItemPosition()-1;
+                if(myId == -1){
+                    errorMessageDialog("Seleccione una operación antes de continuar...");
+                }else {
+                    Intent abrirVerOperacion = new Intent(ver_elementos.this, ver_operaciones.class);
+                    abrirVerOperacion.putExtra("id", idList.get(myId));
+                    startActivity(abrirVerOperacion);
+                }
+            }
+        });
         /*
         * El tipo me determina que elemento estoy viendo
         * 0 = Analistas
@@ -89,6 +103,7 @@ public class ver_elementos extends AppCompatActivity {
     private List<String> getElemento() {
         String URL = "";
         final List<String> arraySpinner = new ArrayList<>();
+        arraySpinner.add("Seleccione un Elemento");
         switch (tipoElemento){
             case 0://Analistas
                 URL = ClaseGlobal.Proyectos_Usuarios_Select + "?Id="+Integer.toString(idProyecto);
@@ -99,7 +114,9 @@ public class ver_elementos extends AppCompatActivity {
                 tv_descSeleccion.setText("Trabajadores");
                 break;
             case 2://Operaciones
-                URL = ClaseGlobal.Proyectos_Select + "?Id="+Integer.toString(idProyecto);
+                URL = ClaseGlobal.Proyectos_Operaciones_Select + "?Id="+Integer.toString(idProyecto) + "&IdOper=NULL";
+                btn_verOperacion.setClickable(true);
+                btn_verOperacion.setVisibility(View.VISIBLE);
                 tv_descSeleccion.setText("Operaciones");
                 break;
             case 3://Asociar Analistas
@@ -135,6 +152,7 @@ public class ver_elementos extends AppCompatActivity {
                                 break;
                             case 2://Operaciones
                                 identificadorElemento = jsonArray.getJSONObject(i).get("ID_OPERACION").toString() + "-" + jsonArray.getJSONObject(i).get("NOMBRE_OPERACION").toString();
+                                idList.add(Integer.parseInt(jsonArray.getJSONObject(i).get("ID_OPERACION").toString()));
                                 break;
                         }
                         arraySpinner.add(repairString(identificadorElemento));
