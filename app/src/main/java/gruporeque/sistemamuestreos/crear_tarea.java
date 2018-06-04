@@ -1,15 +1,12 @@
 package gruporeque.sistemamuestreos;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.view.View;
 
 import com.android.volley.Request;
@@ -51,25 +48,31 @@ public class crear_tarea extends AppCompatActivity {
         if(!txt_name.getText().toString().equals("")&&!txt_desc.getText().toString().equals("")){
             if(radioButtonTP.isChecked()) {
                 createWork(ClaseGlobal.Tarea_Insert+
-                        "?Nombre="+txt_name.getText().toString()+
-                        "&Descripcion="+txt_desc.getText().toString()+
+                        "?Nombre="+repairStringReverse(txt_name.getText().toString())+
+                        "&Descripcion="+repairStringReverse(txt_desc.getText().toString())+
                         "&Tipo_Tarea=TP");
             }
             if(radioButtonTC.isChecked()) {
                 createWork(ClaseGlobal.Tarea_Insert+
-                        "?Nombre="+txt_name.getText().toString()+
-                        "&Descripcion="+txt_desc.getText().toString()+
+                        "?Nombre="+repairStringReverse(txt_name.getText().toString())+
+                        "&Descripcion="+repairStringReverse(txt_desc.getText().toString())+
                         "&Tipo_Tarea=TC");
             }
             if(radioButtonTI.isChecked()) {
                 createWork(ClaseGlobal.Tarea_Insert+
-                        "?Nombre="+txt_name.getText().toString()+
-                        "&Descripcion="+txt_desc.getText().toString()+
+                        "?Nombre="+repairStringReverse(txt_name.getText().toString())+
+                        "&Descripcion="+repairStringReverse(txt_desc.getText().toString())+
                         "&Tipo_Tarea=TI");
             }
         }else{
             errorMessageDialog("Llene todos las casillas para crear la tarea");
         }
+    }
+
+    private String repairStringReverse (String s){
+        if (s.contains(" "))
+            s = s.replaceAll(" ", "_");
+        return s;
     }
 
     private void createWork(String URL){
