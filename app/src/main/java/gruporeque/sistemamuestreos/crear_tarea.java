@@ -26,7 +26,6 @@ import org.json.JSONObject;
 public class crear_tarea extends AppCompatActivity {
 
     Button btn_new;
-    ImageButton btn_out;
     EditText txt_name,txt_desc;
     RadioButton radioButtonTP, radioButtonTC, radioButtonTI;
 
@@ -34,7 +33,6 @@ public class crear_tarea extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_tarea);
-        btn_out = findViewById(R.id.imageButtonSalir);
         btn_new = findViewById(R.id.buttonCrearTarea);
         radioButtonTP = findViewById(R.id.radioButtonTP);
         radioButtonTC = findViewById(R.id.radioButtonTC);
@@ -45,13 +43,6 @@ public class crear_tarea extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 crearTarea();
-            }
-        });
-
-        btn_out.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
             }
         });
     }

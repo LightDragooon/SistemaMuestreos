@@ -90,16 +90,6 @@
         tools:layout_editor_absoluteX="50dp"
         tools:layout_editor_absoluteY="127dp" />
 
-    <ImageButton
-        android:id="@+id/imageButtonSalir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        app:srcCompat="?attr/actionModeCloseDrawable"
-        tools:layout_editor_absoluteX="337dp"
-        tools:layout_editor_absoluteY="0dp" />
-
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
